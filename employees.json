@@ -1,0 +1,34 @@
+[
+  {
+    "job_id": "EMP001",
+    "name": "Alice Johnson",
+    "password": "admin123",
+    "role": "Admin",
+    "department": "Security",
+    "access": ["admin", "it", "staff", "compliance"]
+  },
+  {
+    "job_id": "EMP002",
+    "name": "Brian Smith",
+    "password": "itsecure123",
+    "role": "IT Security",
+    "department": "IT",
+    "access": ["it"]
+  },
+  {
+    "job_id": "EMP003",
+    "name": "Clara James",
+    "password": "staff123",
+    "role": "Healthcare Staff",
+    "department": "Clinical",
+    "access": ["staff"]
+  },
+  {
+    "job_id": "EMP004",
+    "name": "David Lee",
+    "password": "compliance123",
+    "role": "Compliance Officer",
+    "department": "Compliance",
+    "access": ["compliance"]
+  }
+]
