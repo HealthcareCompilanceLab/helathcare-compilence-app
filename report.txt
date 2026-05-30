@@ -1,0 +1,18 @@
+Healthcare Compliance Report
+2026-03-31 17:12:18.295433
+
+MFA must be enabled for admin access - COMPLIANT
+
+TLS must be enabled - COMPLIANT
+
+Audit logging must be enabled - NON-COMPLIANT
+Risk: Medium
+Fix: Enable logging for system activities.
+
+Backups must be encrypted - COMPLIANT
+
+Password length must be >= 8 - NON-COMPLIANT
+Risk: Medium
+Fix: Enforce strong password policies.
+
+Score: 69.23%
