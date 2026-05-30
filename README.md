@@ -98,7 +98,7 @@ healthcare-compliance-dashboard/
 
 ### 1. Clone the repo
 ```bash
-git clone <your-repo-url>
+git clone (https://github.com/HealthcareCompilanceLab/helathcare-compilence-app)
 cd healthcare-compliance-dashboard
 ```
 
