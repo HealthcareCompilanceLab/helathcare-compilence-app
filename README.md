@@ -43,7 +43,7 @@ This Streamlit version builds on that by adding:
 
 
 ### Main dashboard
-![Dashboard preview](https://placehold.co/1000x460/0b1324/e5eefc?text=Main+Dashboard+Screenshot)
+![Dashboard preview](https://github.com/HealthcareCompilanceLab/helathcare-compilence-app/blob/main/login%20page.png)
 
 ### Audit pages
 <p align="center">
