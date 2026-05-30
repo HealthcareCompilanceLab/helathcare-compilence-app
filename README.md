@@ -47,8 +47,8 @@ This Streamlit version builds on that by adding:
 
 ### Audit pages
 <p align="center">
-  <img src="https://placehold.co/480x270/111827/67e8f9?text=IT+Security+Audit" alt="IT audit preview" width="48%" />
-  <img src="https://placehold.co/480x270/111827/facc15?text=Staff+Audit" alt="Staff audit preview" width="48%" />
+  <img src="https://github.com/HealthcareCompilanceLab/helathcare-compilence-app/blob/main/it%20security.png" alt="IT audit preview" width="48%" />
+  <img src="https://github.com/HealthcareCompilanceLab/helathcare-compilence-app/blob/main/staff%20audit.png" alt="Staff audit preview" width="48%" />
 </p>
 
 ## Roles in the app
