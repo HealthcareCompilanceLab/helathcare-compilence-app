@@ -42,6 +42,18 @@ def require_access(required_access):
         st.stop()
 
 
+def require_any_access(required_access_list):
+    initialize_session()
+
+    if not st.session_state.logged_in or not st.session_state.user:
+        st.warning("Please log in to access this page.")
+        st.stop()
+
+    if not any(user_has_access(st.session_state.user, role) for role in required_access_list):
+        st.error("You do not have permission to access this page.")
+        st.stop()
+
+
 def logout():
     st.session_state.logged_in = False
     st.session_state.user = None

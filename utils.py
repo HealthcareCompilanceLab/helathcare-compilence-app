@@ -1,7 +1,10 @@
 import json
 from pathlib import Path
+from datetime import datetime
 
 RISK_WEIGHTS = {"High": 3, "Medium": 2, "Low": 1}
+AUDIT_DIR = Path(__file__).resolve().parent / "audit_logs"
+AUDIT_FILE = AUDIT_DIR / "login_audit_log.txt"
 
 
 def load_json(path: Path):
@@ -78,6 +81,50 @@ def compute_compliance(controls, system):
         "failed": failed,
         "insufficient": insufficient,
     }
+
+
+def append_audit_log(event_type, status, user=None, attempted_job_id=None, note=""):
+    AUDIT_DIR.mkdir(exist_ok=True)
+
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    if user:
+        job_id = user.get("job_id", "N/A")
+        name = user.get("name", "Unknown")
+        role = user.get("role", "Unknown")
+        department = user.get("department", "Unknown")
+    else:
+        job_id = attempted_job_id or "N/A"
+        name = "Unknown"
+        role = "Unknown"
+        department = "Unknown"
+
+    line = (
+        f"[{timestamp}] "
+        f"EVENT={event_type} | "
+        f"STATUS={status} | "
+        f"JOB_ID={job_id} | "
+        f"NAME={name} | "
+        f"ROLE={role} | "
+        f"DEPARTMENT={department}"
+    )
+
+    if note:
+        line += f" | NOTE={note}"
+
+    with open(AUDIT_FILE, "a", encoding="utf-8") as f:
+        f.write(line + "\n")
+
+
+def read_audit_log(limit=None):
+    if not AUDIT_FILE.exists():
+        return []
+
+    with open(AUDIT_FILE, "r", encoding="utf-8") as f:
+        lines = [line.rstrip() for line in f if line.strip()]
+
+    lines = list(reversed(lines))
+    return lines[:limit] if limit else lines
 
 
 def apply_custom_style():

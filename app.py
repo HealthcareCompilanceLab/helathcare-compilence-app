@@ -8,7 +8,8 @@ from utils import (
     render_hero,
     render_alerts,
     render_sidebar,
-    render_system_overview
+    render_system_overview,
+    append_audit_log,
 )
 
 st.set_page_config(page_title="Healthcare Compliance App", page_icon="🏥", layout="wide")
@@ -49,11 +50,23 @@ if not st.session_state.logged_in:
     if submitted:
         user = authenticate_user(job_id, password, employees)
         if user:
+            append_audit_log(
+                event_type="LOGIN",
+                status="SUCCESS",
+                user=user,
+                note="User logged into Streamlit dashboard"
+            )
             st.session_state.logged_in = True
             st.session_state.user = user
             st.success(f"Welcome, {user['name']} ({user['role']})")
             st.rerun()
         else:
+            append_audit_log(
+                event_type="LOGIN",
+                status="FAILED",
+                attempted_job_id=job_id,
+                note="Invalid credentials provided"
+            )
             st.error("Invalid Job ID or password.")
 
     st.markdown("""
@@ -87,6 +100,12 @@ else:
         st.write("")
         st.write("")
         if st.button("Logout"):
+            append_audit_log(
+                event_type="LOGOUT",
+                status="SUCCESS",
+                user=user,
+                note="User logged out of Streamlit dashboard"
+            )
             logout()
             st.rerun()
 
